@@ -53,5 +53,5 @@ def cluster_data(file, n_clusters, max_weight):
                         color=color).add_to(m)
     
     # Return the dataframe with the cluster labels and the folium map object
-    return m, data
+    return data, m
 
