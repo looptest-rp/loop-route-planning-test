@@ -40,5 +40,5 @@ if file is not None:
     st.write("Cluster Map:")
     st_folium(m, width=1000)
 else:
-    st.write("Please upload a file to begin clustering.")
+    st.write("Please upload a file to begin route planning.")
 
