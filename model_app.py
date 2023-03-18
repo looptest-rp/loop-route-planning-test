@@ -21,7 +21,7 @@ st.sidebar.title("Input Parameters")
 
 # Accept user input for n_clusters and max_weight
 n_clusters = st.sidebar.text_input("Number of clusters", value="50")
-max_weight = st.sidebar.text_input("Maximum stops per cluster", value="28")
+max_weight = st.sidebar.text_input("Maximum weight per cluster", value="28")
 
 # If a file is uploaded, cluster the data and display the results
 if file is not None:
