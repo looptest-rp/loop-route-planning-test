@@ -31,14 +31,14 @@ if file is not None:
 
     # Call the cluster_data function with the user input arguments
     data, m = cluster_data(file, n_clusters, max_weight)
+        
+    # Display the folium map
+    st.write("Cluster Map:")
+    st_folium(m, width=1000)
     
     # Display the data with the cluster labels
     st.write("Clustered Data:")
     st.write(data)
-    
-    # Display the folium map
-    st.write("Cluster Map:")
-    st_folium(m, width=1000)
 else:
     st.write("Please upload a file to begin route planning.")
 
