@@ -12,6 +12,12 @@ def cluster_data(file, n_clusters, max_weight):
     # Read the CSV file into a Pandas dataframe
     data = pd.read_csv(file)
     
+    if 'Weight' in data.columns:
+        data = data.loc[data.index.repeat(data['Weight'])].reset_index(drop=True)
+        data['Weight'] = 1
+    else:
+        data['Weight'] = 1
+
     # Apply the KMeansConstrained algorithm to the dataframe
     km_cons = KMeansConstrained(n_clusters=n_clusters,
                                 init='k-means++',
