@@ -10,9 +10,6 @@ import folium
 from streamlit_folium import st_folium
 from model_with_map import cluster_data
 
-# Set the theme to 'dark'
-st.set_theme('dark')
-
 # Add a title to the app
 st.title("Route Planning App")
 
