@@ -21,20 +21,20 @@ st.sidebar.title("Input Parameters")
 
 # Accept user input for n_clusters and max_weight
 n_clusters = st.sidebar.text_input("Number of clusters", value="50")
-max_weight = st.sidebar.text_input("Maximum weight/orders per cluster", value="28")
+max_weight_stops = st.sidebar.text_input("Maximum weight/orders per cluster", value="28")
 
 # If a file is uploaded, cluster the data and display the results
 if file is not None:
     # Convert the input values to integers
     n_clusters = int(n_clusters)
-    max_weight = int(max_weight)
+    max_weight_stops = int(max_weight_stops)
 
     # Call the cluster_data function with the user input arguments
-    data, m = cluster_data(file, n_clusters, max_weight)
+    data, map_obj = cluster_data(file, n_clusters, max_weight_stops)
         
     # Display the folium map
     st.write("Cluster Map:")
-    st_folium(m, width=1000)
+    st_folium(map_obj, width=1000)
     
     # Display the data with the cluster labels
     st.write("Clustered Data:")
