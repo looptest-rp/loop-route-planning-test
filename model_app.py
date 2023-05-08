@@ -14,7 +14,7 @@ from model_with_map import cluster_data
 st.title("Loop Route Planning App Test")
 
 # Create a file uploader component in Streamlit
-file = st.file_uploader("Upload a CSV file with orders latitude and longitude fields")
+file = st.file_uploader("Upload a CSV file with orders latitude and longitude fields, and a Weight field when using Weight as a contraint")
 
 # Add a sidebar to the app
 st.sidebar.title("Input Parameters")
