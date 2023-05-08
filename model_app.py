@@ -11,7 +11,7 @@ from streamlit_folium import st_folium
 from model_with_map import cluster_data
 
 # Add a title to the app
-st.title("Loop Route Planning App")
+st.title("Loop Route Planning App Test")
 
 # Create a file uploader component in Streamlit
 file = st.file_uploader("Upload a CSV file with orders latitude and longitude fields")
