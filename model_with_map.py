@@ -10,7 +10,7 @@ from k_means_constrained import KMeansConstrained
 
 def cluster_data(file, n_clusters, max_weight):
     # Read the CSV file into a Pandas dataframe
-   data = pd.read_csv(file)
+    data = pd.read_csv(file)
     
     # check if weight constraint column exists in the csv file 
     # for clients using weight as a constraint then this field needs to be present in the csv file
