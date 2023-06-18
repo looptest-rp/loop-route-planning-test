@@ -1,5 +1,6 @@
 streamlit
 pandas
+numpy
 k_means_constrained
 folium
 streamlit_folium
