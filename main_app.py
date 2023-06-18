@@ -12,6 +12,9 @@ file = st.file_uploader("Upload a CSV file with orders latitude and longitude fi
 
 if file is not None:
 
+    # Add a sidebar to the app
+    st.sidebar.title("Input Parameters")
+
     # User inputs
     n_clusters = int(st.sidebar.text_input("Number of Clusters", value="6"))
     weight_max = st.sidebar.text_input("Weight Max", value="300, 250, 235, 220, 210, 200")
