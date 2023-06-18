@@ -104,7 +104,6 @@ def cluster_data(file, n_clusters, stops_max=None, weight_max=None):
     for i in range(1, n_clusters):
         cluster_data = data[data['cluster'] == i]
         color = colors[i]
-        cluster_points = []
         cluster_weight = cluster_weights[i]
         cluster_order_count = cluster_stops[i]
         cluster_popup = f"Cluster {i}<br>"
@@ -112,14 +111,15 @@ def cluster_data(file, n_clusters, stops_max=None, weight_max=None):
         cluster_popup += f"Order Count: {cluster_order_count}<br>"
         
         for _, row in cluster_data.iterrows():
-            weight_value = row['Weight']
             # Add marker for each point
+            popup = f"Cluster {i}<br>Order Count: {cluster_order_count}"
+            if weight_max is not None:
+                weight_value = row.get('Weight', 0)
+                cluster_weights[i] += weight_value
+                popup += f"<br>Cluster Weight: {cluster_weight}<br>Order Weight: {weight_value}"
             folium.Marker(location=[row['latitude'], row['longitude']],
                         icon=folium.Icon(color=color),
-                        popup=f"Cluster {i}<br>Cluster Weight: {cluster_weight}<br>Order Count: {cluster_order_count}<br>Order Weight: {weight_value}"
-                        ).add_to(map_obj)
-            # Add point to list of cluster points
-            cluster_points.append([row['latitude'], row['longitude']])
+                        popup=popup).add_to(map_obj)
             
 
     # print cluster stops and wegiht after clustering is complete
