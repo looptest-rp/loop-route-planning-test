@@ -104,23 +104,26 @@ def cluster_data(file, n_clusters, stops_max=None, weight_max=None):
     for i in range(1, n_clusters):
         cluster_data = data[data['cluster'] == i]
         color = colors[i]
-        cluster_weight = cluster_weights[i]
         cluster_order_count = cluster_stops[i]
+
         cluster_popup = f"Cluster {i}<br>"
-        cluster_popup += f"Cluster Weight: {cluster_weight}<br>"
         cluster_popup += f"Order Count: {cluster_order_count}<br>"
-        
+
+        if weight_max is not None:
+            cluster_weight = cluster_data['Weight'].sum()
+            cluster_weights[i] = cluster_weight
+            cluster_popup += f"Cluster Weight: {cluster_weight}<br>"
+      
         for _, row in cluster_data.iterrows():
-            # Add marker for each point
             popup = f"Cluster {i}<br>Order Count: {cluster_order_count}"
             if weight_max is not None:
                 weight_value = row.get('Weight', 0)
-                cluster_weights[i] += weight_value
                 popup += f"<br>Cluster Weight: {cluster_weight}<br>Order Weight: {weight_value}"
             folium.Marker(location=[row['latitude'], row['longitude']],
                         icon=folium.Icon(color=color),
                         popup=popup).add_to(map_obj)
-            
+
+   
 
     # print cluster stops and wegiht after clustering is complete
     print(f"Cluster stops",cluster_stops), print(f"Cluster weights",cluster_weights)
@@ -139,5 +142,3 @@ def cluster_data(file, n_clusters, stops_max=None, weight_max=None):
     print(f"Count of well-allocated tasks: {well_allocated_count}")
     
     return data, cluster_stops, cluster_weights, map_obj
-
-
