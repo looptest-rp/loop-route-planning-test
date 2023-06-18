@@ -3,3 +3,5 @@ pandas
 k_means_constrained
 folium
 streamlit_folium
+scikit-learn
+
